@@ -19,9 +19,22 @@ local function update_defs()
 
 	rpc.get_definition_file(function(_, contents)
 		utils.write_file(def_file_name, contents:gsub("export ", ""), true)
-		vim.uv.fs_copyfile(tsc_template_path, tsc_file_path, function(err)
-			assert(not err, "failed to copy tsconfig to cwd")
-		end)
+
+		local template = table.concat(vim.fn.readfile(tsc_template_path), "\n")
+		local tsconfig = vim.json.decode(template)
+		local bitburner_dir = utils.get_bitburner_dir()
+
+		if bitburner_dir ~= "" then
+			tsconfig.compilerOptions.paths = {
+				["/" .. bitburner_dir .. "/*"] = { "./*" },
+			}
+		end
+
+		local output = vim.fn.system({ "jq", "." }, vim.json.encode(tsconfig))
+		assert(vim.v.shell_error == 0, "failed to format tsconfig.json")
+
+		local ok = vim.fn.writefile(vim.split(output, "\n"), tsc_file_path)
+		assert(ok == 0, "failed to write tsconfig.json")
 	end)
 end
 
