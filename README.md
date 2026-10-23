@@ -12,6 +12,7 @@ Write [Bitburner](https://store.steampowered.com/app/1812820/Bitburner/) scripts
 
 <!--toc:start-->
 
+- [Requirements](#requirements)
 - [Dependencies](#dependencies)
 - [Configuration](#configuration)
   - [lazy.nvim](#lazynvim)
@@ -19,6 +20,10 @@ Write [Bitburner](https://store.steampowered.com/app/1812820/Bitburner/) scripts
 - [Statusline](#statusline)
 - [Commands](#commands)
 <!--toc:end-->
+
+## Requirements
+
+- Neovim 0.11 or newer
 
 ## Dependencies
 
