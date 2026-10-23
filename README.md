@@ -40,6 +40,7 @@ Write [Bitburner](https://store.steampowered.com/app/1812820/Bitburner/) scripts
     port = 12525,
     root_dir = "~/bitburner-files",
     file_sync_exts = { "js", "ts", "jsx", "tsx" },
+	bitburner_dir = "",
   },
 }
 ```
@@ -51,6 +52,7 @@ require("netscript").setup({
   port = 12525,
   root_dir = "~/bitburner-files",
   file_sync_exts = { "js", "ts", "jsx", "tsx" },
+  bitburner_dir = "",
 })
 ```
 
@@ -59,6 +61,7 @@ require("netscript").setup({
 | `port`           | `number`   | `12525`                        | Port the WebSocket server binds to                                   |
 | `root_dir`       | `string`   | `~/bitburner-files`            | Plugin only activates when the working directory is inside this path |
 | `file_sync_exts` | `string[]` | `{ "js", "ts", "jsx", "tsx" }` | File extensions included in sync operations; others are ignored      |
+| `bitburner_dir`  | `string`   | `""`                           | Optional directory prefix for files synced to and from Bitburner      |
 
 ## Statusline
 
